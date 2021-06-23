@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.company</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">java.io.BufferedReader</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.FileReader</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.FileWriter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.io.IOException</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.*</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">Main {</span>
+
+    <span class="s0">private static </span><span class="s1">Object HashMap</span><span class="s0">;</span>
+
+    <span class="s0">public static void </span><span class="s1">main(String[] args)</span>
+
+
+    <span class="s1">}</span>
+
+    <span class="s0">public class </span><span class="s1">AdressBook {</span>
+        <span class="s1">HashMap&lt;String</span><span class="s0">, </span><span class="s1">String&gt; Dolby</span><span class="s0">;</span>
+
+        <span class="s0">public void </span><span class="s1">load() </span><span class="s0">throws </span><span class="s1">IOException {</span>
+            <span class="s1">String pathToCsv = </span><span class="s2">&quot;Actividad4.csv&quot;</span><span class="s0">;</span>
+            <span class="s1">BufferedReader csvReader = </span><span class="s0">new </span><span class="s1">BufferedReader(</span><span class="s0">new </span><span class="s1">FileReader(pathToCsv))</span><span class="s0">;</span>
+            <span class="s0">while </span><span class="s1">((row = csvReader.readLine()) != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">String[] data = row.split(</span><span class="s2">&quot;,&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">Dolby.put(data[</span><span class="s3">1</span><span class="s1">]</span><span class="s0">, </span><span class="s1">data[</span><span class="s3">0</span><span class="s1">])</span><span class="s0">;</span>
+            <span class="s1">}</span>
+            <span class="s1">csvReader.close()</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+        <span class="s0">public void </span><span class="s1">save(HashMap&lt;String</span><span class="s0">, </span><span class="s1">String&gt; nuevosContactos) </span><span class="s0">throws </span><span class="s1">IOException {</span>
+            <span class="s1">HashMap&lt;String</span><span class="s0">, </span><span class="s1">String&gt; map = nuevosContactos</span><span class="s0">;</span>
+            <span class="s1">FileWriter csvWriter = </span><span class="s0">new </span><span class="s1">FileWriter(</span><span class="s2">&quot;Actividad4.csv&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">for </span><span class="s1">(Map.Entry&lt;String</span><span class="s0">, </span><span class="s1">String&gt; entry : map.entrySet()) {</span>
+                <span class="s1">csvWriter.append(entry.getKey())</span><span class="s0">;</span>
+                <span class="s1">csvWriter.append(</span><span class="s2">&quot;,&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s1">csvWriter.append(entry.getValue())</span><span class="s0">;</span>
+                <span class="s1">csvWriter.append(</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+            <span class="s1">csvWriter.flush()</span><span class="s0">;</span>
+            <span class="s1">csvWriter.close()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+
+
+            <span class="s0">public void </span><span class="s1">list(HashMap &lt; String</span><span class="s0">, </span><span class="s1">String &gt; contactos){</span>
+
+        <span class="s1">}</span>
+            <span class="s0">public void </span><span class="s1">create(HashMap &lt; String</span><span class="s0">, </span><span class="s1">String &gt; contactos</span><span class="s0">, </span><span class="s1">Map.Entry&lt;String</span><span class="s0">, </span><span class="s1">String&gt; nuevoContacto){</span>
+                <span class="s1">contactos.put(nuevoContacto.getKey()</span><span class="s0">, </span><span class="s1">nuevoContacto.getValue())</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+            <span class="s0">public void </span><span class="s1">delete(HashMap &lt; String</span><span class="s0">, </span><span class="s1">String &gt; contactos</span><span class="s0">, </span><span class="s1">Map.Entry&lt;String</span><span class="s0">, </span><span class="s1">String&gt; contactoBorrar){</span>
+            <span class="s1">contactos.remove(contactoBorrar.getKey())</span><span class="s0">;</span>
+
+        <span class="s1">}</span>
+
+
+    <span class="s1">}</span>
+    <span class="s1">system.out.printIn(AdreesBook)</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
